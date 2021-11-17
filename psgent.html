@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+/* Style buttons */
+.btn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+
+<div class="w3-container w3-card-4 w3-center" style="width:85%;border-radius: 25px;margin-left: auto;margin-right: auto;margin-top:25px;">
+    <div class="w3-panel">
+    <!--<div class="w3-card-4" style="border-radius: 25px;">-->
+    <h1 class="w3-center">Secure Password Generator</h1>
+    <div class="w3-container w3-center">
+    
+    <div class="w3-row">
+     <div class="w3-col" style="width:90%"><input class="w3-input w3-border" type="text" id="pass" >
+    </div>
+    <div class="w3-rest"><button class="btn"><i class="fa fa-undo" onclick="reset()"></i></button> <button class="btn"><i class="fa fa-pencil" onclick="copytoCilpboard()"></i></button>
+    </div>
+    <!--<p id="demo" class="w3-large"></p> -->
+    </div>
+    
+    </div>
+    &nbsp;
+  
+    </div>
+    </div>
+
+ 
+    <script>
+    
+    
+    
+   
+    
+    var array = ["Arm","Arroyo","Artificial","Aubach","Barachois","Basin","Bay","Bayou","Beck","Bight","Billabong","Boil","Bourn","Brook","Brooklet","Burn","Canal","Channel","Cove","Creek","Creek","Delta","Distributary","Drainage","Draw","Estuary","Firth","Fjord","Gill","Glacier","Glacial","Gulf","Harbor","Hot","Impoundment","Inlet","Kettle","Kill","Lagoon","Lake","Lick","Loch","Mangrove","Marsh","Mediterranean","Mere","Mill","Moat","Mud","Ocean","Oxbow","Phytotelma","Plunge","Pool","Pond","Port","Pothole","Puddle","Reflecting","Reservoir","Rill","River","Rivulet","Roadstead","Run","Salt","Sea","Sea","Sea","Seep","Slough","Source","Shoal","Sound","Spring","Strait","Stream","Stream","Streamlet","Subglacial","Swamp","Swimming","Tank","Tarn","Tide","Tributary","Vernal","Wadi","Wash","Wetland"];
+    var arrayp = ["Adams","Arthur","Biden","Buchanan","Bush","Carter","Cleveland","Clinton","Coolidge","Eisenhower","Fillmore","Ford","Garfield","Grant","Harding","Harrison","Harrison","Hayes","Hoover","Jackson","Jefferson","Johnson","Johnson","Kennedy","Lincoln","Madison","McKinley","Monroe","Nixon","Obama","Pierce","Polk","Reagan","Roosevelt","Taft","Taylor","Truman","Trump","Tyler","Van Buren","Washington","Wilson"];
+    var arrays = '!@#$%^&*()_-=+';
+    
+    var bdWater = array;
+    var prez = arrayp;
+    var spec = arrays;
+    
+    var password;
+    
+   function reset()
+    { 
+    var rndNum = Math.floor(Math.random() * array.length) + 1;
+    var rndNump = Math.floor(Math.random() * arrayp.length) + 1;
+    //var rndNums = Math.floor(Math.random() * arrays.length) + 1;
+    var rndNums = Math.floor(Math.random() * arrays.length) + 1;
+    let n = arrays.length;
+    
+    var digits = Math.floor(1000 + Math.random() * 9000);
+    
+     
+    password = bdWater[rndNum].toUpperCase().slice(0, 4) + digits + prez[rndNump].toLowerCase().slice(0, 3) + makeid();
+    
+    
+    let str = "Hello world!"; 
+   // document.getElementById("demo").innerHTML = password;//makeid();
+    document.getElementById("pass").value = password;//makeid();
+    }
+    
+    /* cyccles through the special characters */
+    function makeid() {
+      var text = "";
+      var possible = "!@#";
+    
+      for (var i = 0; i < 3; i++)
+        text += arrays.charAt(Math.floor(Math.random() * arrays.length)) ;
+    
+      return text;
+    }
+    
+
+    
+    
+    function copytoCilpboard() {
+     //retired method
+     /* Get the text field */
+     //var copyText = document.getElementById("pass");
+     
+     /* Select the text field */
+    // copyText.select();
+    // copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+    //navigator.clipboard.writeText(copyText.value);
+    
+    
+     navigator.clipboard.writeText(password);
+    
+ 
+    
+    }
+    </script>
